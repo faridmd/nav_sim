@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- Jalankan Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find nav_sim)/worlds/droneLidar.world"/>
+  </include>
+
+  <!-- Jalankan ArduPilot -->
+  <node name="ardupilot-sitl" pkg="nav_sim" type="start_sitl.sh" output="screen"/>
+
+  <!-- Jalankan MAVROS / apm.launch -->
+  <include file="$(find nav_sim)/launch/apm.launch"/>
+
+</launch>
